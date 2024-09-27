@@ -1,0 +1,40 @@
+<div class="productList">
+    <ul>
+        <h2>Liste des produits sans prix :</h2>
+        @for (product of products;track $index) {
+            @if (product.price == null) {
+                <li>
+                    <h3>{{product.name}}</h3>
+                </li>
+            }
+        } @empty {
+            <p>Pas de produits !</p>
+        }
+    </ul>
+
+    <ul>
+        <h2>Liste des produits en promotion :</h2>
+        @for (product of products;track $index) {
+            @if (product.isPromoted) {
+                <li>
+                    <h3>{{product.name}}</h3>
+                </li>
+            }
+        } @empty {
+            <p>Pas de produits !</p>
+        }
+    </ul>
+
+    <ul>
+        <h2>Liste des produits avec prix et sans promo :</h2>
+        @for (product of products;track $index) {
+            @if (product.price != null && !product.isPromoted) {
+                <li>
+                    <h3>{{product.name}}</h3>
+                </li>
+            }
+        } @empty {
+            <p>Pas de produits !</p>
+        }
+    </ul>
+</div>
